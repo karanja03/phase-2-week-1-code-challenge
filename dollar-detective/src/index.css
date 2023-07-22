@@ -69,7 +69,30 @@ color: whitesmoke;
 
 
 }
-.fillinform{
+label{
   display: block;
+  color: white;
+  font-weight: 500;
+  line-height: 40px;
+ 
 }
-
+.addtransactiontbtn{
+  margin-left: 100px;
+  padding: 10px;
+}
+.bottompart{
+  background-color: #0033a1;
+  margin-top: 100px;
+  display: flex;
+}
+.fillinform{
+  margin-left: 20px;
+}
+.addtransactiontbtn{
+  font-weight: 600;
+}
+.motivation{
+  text-align: center;
+  padding-left: 50px;
+  color: whitesmoke;
+}

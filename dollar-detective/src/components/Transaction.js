@@ -1,7 +1,9 @@
 import React from "react";
 
 
-function Transaction({ date, description, category, amount}) {
+function Transaction({ id,date, description, category, amount,handledeletebutton}) {
+
+    
     return(
 
         <div className="transactions">
@@ -10,8 +12,9 @@ function Transaction({ date, description, category, amount}) {
             <p className="paragraphtrans">Description : {description}</p>
             <p className="paragraphtrans">Category : {category}</p>
             <p className="paragraphtrans">Amount : {amount}</p>
-            <button className="deletebtn">DELETE</button>
+            
             </button>
+            <button className="deletebtn" onClick={()=>handledeletebutton(id)}>DELETE</button>
           
 
         </div>

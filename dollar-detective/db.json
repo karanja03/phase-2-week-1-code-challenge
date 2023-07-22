@@ -104,6 +104,20 @@
       "category": "Foog",
       "amount": "3435",
       "id": 15
+    },
+    {
+      "date": "22-07-23",
+      "description": "Going For Movies",
+      "category": "Food",
+      "amount": "4500",
+      "id": 16
+    },
+    {
+      "date": "25-12-07",
+      "description": "Buying new Laptop",
+      "category": "Housing",
+      "amount": "6780",
+      "id": 17
     }
   ]
 }

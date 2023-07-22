@@ -50,6 +50,8 @@ function NewTransaction({ onAddTransaction }) {
   };
 
   return (
+    <div className="bottompart">
+      <div className="formpart">
     <form onSubmit={handleSubmitForm} className="fillinform">
       <label htmlFor="dateinput">DATE:</label>
       <input
@@ -87,8 +89,14 @@ function NewTransaction({ onAddTransaction }) {
         onChange={handleChangeForm}
         placeholder="Please Enter Amount"
       />
-      <button type="submit">Add Transaction</button>
+      <button className="addtransactiontbtn" type="submit">Add Transaction</button>
     </form>
+    </div>
+    <div className="motivation">
+      <h3>Empower Your Finances: Unleash the Dollar Detective Within You!</h3>
+      <p>Discover the power of your money with our Dollar Detective transaction app!<br/>Take control of your financial journey and make informed decisions with every transaction.<br/> Track, categorize, and analyze your spending to unlock the secrets of your financial habits.<br/> Empower yourself to use your money wisely, invest in your future,<br/> and achieve your dreams.</p>
+    </div>
+    </div>
   );
 }
 

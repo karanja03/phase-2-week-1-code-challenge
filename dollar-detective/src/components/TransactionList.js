@@ -2,7 +2,7 @@ import React,{useState, useEffect} from "react";
 import Transaction from "./Transaction";
 import NewTransaction from "./NewTransaction";
 
-function TransactionList(){
+function TransactionList({selectedCategory}){
     const[transactions, setTransactions]=useState([])
 
     useEffect(()=>{
@@ -11,10 +11,18 @@ function TransactionList(){
         .then((data)=>setTransactions(data))
     }, []);
 
+     const filteredTransactions=selectedCategory==="All"?transactions:transactions.filter((transaction)=> transaction.category===selectedCategory)
+
     const handleAddTransaction = (newTransaction) => {
         // Add the new transaction to the transactions array
         setTransactions((prevTransactions) => [...prevTransactions, newTransaction]);
+
       };
+      const handleClick=((id)=>{
+        const remainingTransactions=transactions.filter((transaction)=>transaction.id !==id);
+        setTransactions(remainingTransactions)
+
+      })
     
 
     return(
@@ -23,15 +31,17 @@ function TransactionList(){
              {transactions.map((transaction)=>(
                 <Transaction 
                 key={transaction.id}
+                id={transaction.id}
                 
                 date={transaction.date}
                 description={transaction.description}
                 category={transaction.category}
                 amount={transaction.amount}
+                handledeletebutton={handleClick}
                 />
                 
              ))}
-             <NewTransaction onAddTransaction={handleAddTransaction} />
+             <NewTransaction onAddTransaction={handleAddTransaction}  />
              
 
         </div>
