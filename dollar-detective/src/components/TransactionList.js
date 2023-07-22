@@ -4,6 +4,20 @@ import NewTransaction from "./NewTransaction";
 
 function TransactionList({selectedCategory}){
     const[transactions, setTransactions]=useState([])
+    const [sortedTransactions, setSortedTransactions] = useState([])
+    
+    useEffect(() => {
+      const sortTransactionsByCategory = (category) => {
+        if (category === "All") {
+          return [...transactions];
+        } else {
+          return transactions.filter((transaction) => transaction.category === category);
+        }
+      };
+  
+      setSortedTransactions(sortTransactionsByCategory(selectedCategory));
+    }, [selectedCategory, transactions]);
+  
 
     useEffect(()=>{
         fetch("http://localhost:8001/transactions")
@@ -11,7 +25,7 @@ function TransactionList({selectedCategory}){
         .then((data)=>setTransactions(data))
     }, []);
 
-     const filteredTransactions=selectedCategory==="All"?transactions:transactions.filter((transaction)=> transaction.category===selectedCategory)
+    //  const filteredTransactions=selectedCategory==="All"?transactions:transactions.filter((transaction)=> transaction.category===selectedCategory)
 
     const handleAddTransaction = (newTransaction) => {
         // Add the new transaction to the transactions array
@@ -28,7 +42,7 @@ function TransactionList({selectedCategory}){
     return(
         <div className="allTransactions">
             
-             {transactions.map((transaction)=>(
+             {/* {transactions.map((transaction)=>(
                 <Transaction 
                 key={transaction.id}
                 id={transaction.id}
@@ -40,7 +54,30 @@ function TransactionList({selectedCategory}){
                 handledeletebutton={handleClick}
                 />
                 
-             ))}
+             ))} */}
+             {selectedCategory === "All"
+        ? transactions.map((transaction) => (
+            <Transaction
+              key={transaction.id}
+              id={transaction.id}
+              date={transaction.date}
+              description={transaction.description}
+              category={transaction.category}
+              amount={transaction.amount}
+              handledeletebutton={handleClick}
+            />
+          ))
+        : sortedTransactions.map((transaction) => (
+            <Transaction
+              key={transaction.id}
+              id={transaction.id}
+              date={transaction.date}
+              description={transaction.description}
+              category={transaction.category}
+              amount={transaction.amount}
+              handledeletebutton={handleClick}
+            />
+          ))}
              <NewTransaction onAddTransaction={handleAddTransaction}  />
              
 

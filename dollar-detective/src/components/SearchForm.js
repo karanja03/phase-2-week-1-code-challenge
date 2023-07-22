@@ -6,12 +6,13 @@ function SearchForm({handleSearch}){
     const [searchCategory, setSearchCategory] = useState("");
     const handleChange = (e) => {
         setSearchCategory(e.target.value);
-        
+        handleSearch(e.target.value)
       };
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        handleSearch(searchCategory.trim()); // Call the handleSearch function from the parent component with the input value
+       
+        handleSearch(searchCategory); // Call the handleSearch function from the parent component with the input value
       };
     return(
         <div className="searchSort">

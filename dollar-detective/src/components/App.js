@@ -11,23 +11,27 @@ import TransactionList from "./TransactionList";
 
 function App(){
     //handling the drop down change
+   
     const[selectCategory, setSelectCategory]=useState("All");
     const [transactions, setTransactions] = useState([]); 
+    const [sortCategory, setSortCategory] = useState("All");
     const handleDropDown=(e)=>{
-        setSelectCategory(e.target.value)
+      if(e&&e.target&& e.target.value){
+        setSortCategory(e.target.value)
+      }
     }
      
     const handleSearch=(category)=>{
 
-        if (category.trim() === "") {
+        if (category === "") {
             setSelectCategory("All");
             setTransactions(transactions);
           } else {
-      //   const filteredTransactions =
-      // category === "" ? transactions : transactions.filter((transaction) => transaction.category === category.trim());
-      setSelectCategory(category.trim())
-    // setTransactions(filteredTransactions);
+        const filteredTransactions = transactions.filter((transaction) => transaction.category === category);
+       setSelectCategory(category)
+    setTransactions(filteredTransactions);
   };
+ 
 }
         
         
@@ -45,11 +49,11 @@ function App(){
         <SearchForm  handleSearch={handleSearch}/>
         <SortForm
         categories={categories}
-        selectedCategory={selectCategory}
+        selectedCategory={sortCategory}
         onChange={handleDropDown}
         />
 
-        <TransactionList selectedCategory={selectCategory} transactions={transactions}/>
+        <TransactionList selectedCategory={selectCategory} transactions={transactions} sortCategory={sortCategory}/>
         
         </div>
     )
