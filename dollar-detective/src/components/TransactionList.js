@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from "react";
 import Transaction from "./Transaction";
+import NewTransaction from "./NewTransaction";
 
 function TransactionList(){
     const[transactions, setTransactions]=useState([])
@@ -10,8 +11,15 @@ function TransactionList(){
         .then((data)=>setTransactions(data))
     }, []);
 
+    const handleAddTransaction = (newTransaction) => {
+        // Add the new transaction to the transactions array
+        setTransactions((prevTransactions) => [...prevTransactions, newTransaction]);
+      };
+    
+
     return(
         <div className="allTransactions">
+            
              {transactions.map((transaction)=>(
                 <Transaction 
                 key={transaction.id}
@@ -21,7 +29,9 @@ function TransactionList(){
                 category={transaction.category}
                 amount={transaction.amount}
                 />
+                
              ))}
+             <NewTransaction onAddTransaction={handleAddTransaction} />
              
 
         </div>

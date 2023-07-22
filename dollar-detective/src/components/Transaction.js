@@ -12,8 +12,7 @@ function Transaction({ date, description, category, amount}) {
             <p className="paragraphtrans">Amount : {amount}</p>
             <button className="deletebtn">DELETE</button>
             </button>
-
-
+          
 
         </div>
        
