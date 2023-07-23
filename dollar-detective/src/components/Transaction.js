@@ -5,15 +5,19 @@ function Transaction({ id,date, description, category, amount,handledeletebutton
 
     
     return(
-
-        <div className="transactions">
-            <button className="transactionButtondisplay">
-            <p className="paragraphtrans"> Date : {date}</p>
-            <p className="paragraphtrans">Description : {description}</p>
-            <p className="paragraphtrans">Category : {category}</p>
-            <p className="paragraphtrans">Amount : {amount}</p>
-            
-            </button>
+        <div >
+          <table>
+            <tbody>
+          <tr key={id}>
+            <td>{date}</td>
+            <td>{description}</td>
+            <td>{category}</td>
+            <td>{amount}</td>
+          </tr>
+          </tbody>
+          </table>
+        
+        
             <button className="deletebtn" onClick={()=>handledeletebutton(id)}>DELETE</button>
           
 

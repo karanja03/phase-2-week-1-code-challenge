@@ -118,6 +118,13 @@
       "category": "Housing",
       "amount": "6780",
       "id": 17
+    },
+    {
+      "date": "22-08-23",
+      "description": "Buying a car",
+      "category": "Income",
+      "amount": "45467",
+      "id": 18
     }
   ]
 }

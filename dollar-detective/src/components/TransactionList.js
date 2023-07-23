@@ -25,7 +25,6 @@ function TransactionList({selectedCategory}){
         .then((data)=>setTransactions(data))
     }, []);
 
-    //  const filteredTransactions=selectedCategory==="All"?transactions:transactions.filter((transaction)=> transaction.category===selectedCategory)
 
     const handleAddTransaction = (newTransaction) => {
         // Add the new transaction to the transactions array
@@ -42,19 +41,16 @@ function TransactionList({selectedCategory}){
     return(
         <div className="allTransactions">
             
-             {/* {transactions.map((transaction)=>(
-                <Transaction 
-                key={transaction.id}
-                id={transaction.id}
-                
-                date={transaction.date}
-                description={transaction.description}
-                category={transaction.category}
-                amount={transaction.amount}
-                handledeletebutton={handleClick}
-                />
-                
-             ))} */}
+              <table>
+        <thead>
+          <tr className="headingtr">
+            <th className="tableheaddate">DATE</th>
+            <th className="tableheaddes">DESCRIPTION</th>
+            <th className="tableheadcat">CATEGORY</th>
+            <th className="tableheadam">AMOUNT</th>
+          </tr>
+        </thead>
+        <tbody>
              {selectedCategory === "All"
         ? transactions.map((transaction) => (
             <Transaction
@@ -78,6 +74,8 @@ function TransactionList({selectedCategory}){
               handledeletebutton={handleClick}
             />
           ))}
+          </tbody>
+          </table>
              <NewTransaction onAddTransaction={handleAddTransaction}  />
              
 
